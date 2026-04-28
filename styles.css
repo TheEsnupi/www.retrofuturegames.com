@@ -1,0 +1,969 @@
+/* ═══════════════════════════════════════════
+   VARIABLES & RESET
+═══════════════════════════════════════════ */
+
+:root {
+    --bg: #000;
+    --surface: #111;
+    --header-bg: #cc0000;
+    --nav-bg: #000;
+    --nav-text: #fff;
+    --red: #cc0000;
+    --red-bright: #ff2020;
+    --text: #fff;
+    --subtext: #ccc;
+    --card-bg: #1a1a1a;
+    --border: #cc0000;
+    --dropdown-nintendo: #cc0000;
+    --dropdown-ps: #3355cc;
+    --dropdown-xbox: #22aa22;
+    --dropdown-tcg: #cccc00;
+    --dropdown-anime: #cc6600;
+    --footer-bg: #0a0a0a;
+  }
+
+body.light {
+    --bg: #e8e8e8;
+    --surface: #d0d0d0;
+    --nav-bg: #222;
+    --text: #111;
+    --subtext: #444;
+    --card-bg: #bbb;
+    --footer-bg: #ccc;
+  }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+/* ═══════════════════════════════════════════
+   TOP BAR
+═══════════════════════════════════════════ */
+
+  .top-bar {
+    background: var(--red);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid #800;
+  }
+
+.mode-buttons { display: flex; gap: 4px; }
+
+.mode-btn {
+    padding: 5px 14px;
+    border: 2px solid #fff;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+
+.mode-btn.dark { background: #000; color: #fff; }
+
+.mode-btn.light { background: #fff; color: #000; }
+
+.mode-btn:hover { opacity: 0.8; }
+
+.site-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(255,100,100,0.6);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+.store-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    letter-spacing: 2px;
+    background: var(--red);
+    padding: 6px 20px;
+    border: 2px solid #800;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+.store-name:hover { background: #aa0000; border-color: #600; }
+
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+
+  nav {
+    background: var(--nav-bg);
+    display: flex;
+    border-bottom: 2px solid var(--red);
+    position: relative;
+    z-index: 100;
+  }
+
+.nav-item {
+    flex: 1;
+    position: relative;
+    text-align: center;
+  }
+
+.nav-item > a {
+    display: block;
+    padding: 12px 0;
+    color: var(--nav-text);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: color 0.2s, background 0.2s;
+  }
+
+.nav-item > a:hover { color: var(--red-bright); background: rgba(255,0,0,0.08); }
+
+.nav-item:not(:last-child) { border-right: 1px solid #333; }
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 180px;
+    z-index: 200;
+    border: 2px solid var(--border);
+    border-top: none;
+  }
+
+.nav-item:hover .dropdown { display: block; }
+
+.dropdown a {
+    display: block;
+    padding: 8px 16px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    transition: filter 0.2s;
+  }
+
+.dropdown a:hover { filter: brightness(1.3); }
+
+.nav-item.nintendo .dropdown { background: var(--dropdown-nintendo); }
+
+.nav-item.playstation .dropdown { background: var(--dropdown-ps); }
+
+.nav-item.xbox .dropdown { background: var(--dropdown-xbox); }
+
+.nav-item.tcg .dropdown { background: var(--dropdown-tcg); }
+
+.nav-item.tcg .dropdown a { color: #111; }
+
+.nav-item.anime .dropdown { background: var(--dropdown-anime); }
+
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+
+  footer {
+    background: var(--footer-bg);
+    border-top: 3px solid var(--red);
+    padding: 16px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: #666;
+    letter-spacing: 1px;
+  }
+
+footer span { color: #888; }
+
+
+/* ═══════════════════════════════════════════
+   HOME — HERO BANNER
+═══════════════════════════════════════════ */
+
+  .hero {
+    background: var(--red);
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 4px solid #800;
+    position: relative;
+    overflow: hidden;
+  }
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 20px,
+      rgba(0,0,0,0.05) 20px, rgba(0,0,0,0.05) 40px
+    );
+  }
+
+.hero h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(24px, 4vw, 48px);
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 3px 3px 0 #800, 0 0 30px rgba(255,200,200,0.4);
+    letter-spacing: 2px;
+    position: relative;
+  }
+
+.hero-sub {
+    margin-top: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 3px;
+    position: relative;
+  }
+
+
+/* ═══════════════════════════════════════════
+   HOME — MAIN GRID
+═══════════════════════════════════════════ */
+
+  .main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 0;
+    flex: 1;
+    border-top: 3px solid var(--red);
+  }
+
+.section {
+    padding: 24px 20px;
+    border-right: 2px solid #222;
+  }
+
+.section:last-child { border-right: none; }
+
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--red);
+    color: var(--text);
+    text-transform: uppercase;
+  }
+
+
+/* ═══════════════════════════════════════════
+   HOME — OWNER'S PICKS CAROUSEL
+═══════════════════════════════════════════ */
+
+  .picks-carousel {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--card-bg);
+    border: 2px solid #333;
+    position: relative;
+    overflow: hidden;
+  }
+
+.picks-carousel img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.8s;
+  }
+
+.picks-carousel img.active { opacity: 1; }
+
+.carousel-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.75);
+    padding: 8px 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: #ff8888;
+    z-index: 2;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+.carousel-dot {
+    width: 8px; height: 8px;
+    background: #444;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+.carousel-dot.active { background: var(--red-bright); }
+
+
+/* ═══════════════════════════════════════════
+   SHARED — GAME CARDS
+═══════════════════════════════════════════ */
+
+  .new-releases-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+.nr-row {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    gap: 8px;
+    border: 2px solid #222;
+  }
+
+.nr-cover {
+    background: #000;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+.nr-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+.nr-trailer {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    overflow: hidden;
+  }
+
+.nr-trailer iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+
+/* ═══════════════════════════════════════════
+   HOME — RETRO CONSOLES PREVIEW
+═══════════════════════════════════════════ */
+
+  .retro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+.console-card {
+    background: var(--card-bg);
+    border: 2px solid #333;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    position: relative;
+  }
+
+.console-card:hover { border-color: var(--red-bright); }
+
+.console-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 4px;
+  }
+
+
+/* ═══════════════════════════════════════════
+   HOME — CONSOLE REPAIRS
+═══════════════════════════════════════════ */
+
+  .repairs-section {
+    width: 220px;
+    min-width: 220px;
+    padding: 24px 16px;
+  }
+
+.repair-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+  }
+
+.repair-table th {
+    background: #333;
+    color: var(--text);
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--red);
+  }
+
+.repair-table td {
+    padding: 10px;
+    border-bottom: 1px solid #2a2a2a;
+    color: var(--subtext);
+    vertical-align: middle;
+  }
+
+.repair-table tr:hover td { background: rgba(255,0,0,0.06); color: var(--text); }
+
+.repair-price { color: #44ff88; font-weight: 700; }
+
+.view-all-link {
+    display: block;
+    text-align: center;
+    margin-top: 12px;
+    padding: 8px;
+    background: rgba(204,0,0,0.15);
+    border: 1px solid var(--red);
+    color: var(--red-bright);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    transition: background 0.2s;
+  }
+
+.view-all-link:hover { background: rgba(204,0,0,0.35); }
+
+
+/* ═══════════════════════════════════════════
+   NEW RELEASES PAGE
+═══════════════════════════════════════════ */
+
+/* MAIN WRAPPER */
+  .page-wrap {
+    flex: 1;
+    padding: 24px;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+.content-panel {
+    background: var(--panel-bg);
+    border: 3px solid var(--red);
+    padding: 30px;
+    overflow: hidden;
+  }
+
+/* SECTION HEADER */
+  .section-banner {
+    background: #000;
+    border: 2px solid var(--red);
+    padding: 14px 24px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+.section-banner h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #fff;
+  }
+
+/* COMING SOON GRID */
+  .coming-soon-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+.preorder-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+.preorder-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--text);
+    text-align: center;
+  }
+
+.preorder-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: #000;
+    border: 2px solid var(--red);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+.preorder-img:hover { border-color: #ff8800; transform: scale(1.02); }
+
+.preorder-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+.preorder-btn {
+    padding: 8px 20px;
+    background: #ff6600;
+    border: 2px solid #ff9944;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+    text-align: center;
+  }
+
+.preorder-btn:hover { background: #ff8822; }
+
+/* JUST RELEASED GRID */
+  .just-released-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+  }
+
+.just-released-grid .game-card {
+    background: #000;
+    border: 2px solid var(--red);
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 3/4;
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+.just-released-grid .game-card:hover {
+    border-color: #ff4444;
+    transform: scale(1.03);
+    z-index: 10;
+  }
+
+.just-released-grid .game-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+.game-card-name {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.8);
+    padding: 4px 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    color: #ff8888;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+.just-released-grid .game-card:hover .game-card-name { opacity: 1; }
+
+
+/* ═══════════════════════════════════════════
+   RETRO CONSOLES PAGE
+═══════════════════════════════════════════ */
+
+/* LAYOUT */
+  .page-body {
+    flex: 1;
+    display: flex;
+    border: 3px solid var(--red);
+    margin: 16px;
+    overflow: hidden;
+  }
+
+/* SIDEBAR */
+  .sidebar {
+    width: 220px;
+    min-width: 220px;
+    background: var(--sidebar-bg);
+    border-right: 2px solid var(--red);
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+.sidebar-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--red-bright);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--red);
+    text-transform: uppercase;
+  }
+
+.filter-group {
+    margin-bottom: 16px;
+  }
+
+.filter-group-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    color: #666;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+.filter-btn {
+    display: block;
+    width: 100%;
+    padding: 7px 12px;
+    background: transparent;
+    border: 1px solid #333;
+    color: var(--subtext);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    text-align: left;
+    cursor: pointer;
+    margin-bottom: 3px;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+
+.filter-btn:hover, .filter-btn.active {
+    background: rgba(204,0,0,0.2);
+    border-color: var(--red);
+    color: var(--text);
+  }
+
+.filter-btn.active {
+    background: rgba(204,0,0,0.2);
+    border-color: var(--red);
+    color: var(--text);
+  }
+
+/* MAIN CATALOG */
+  .catalog {
+    flex: 1;
+    background: var(--main-bg);
+    padding: 24px;
+    overflow-y: auto;
+  }
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+  }
+
+.console-card {
+    background: var(--card-bg);
+    border: 2px solid #333;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+
+.console-card:hover {
+    border-color: var(--red-bright);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(204,0,0,0.3);
+  }
+
+.console-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    padding: 8px;
+    overflow: hidden;
+  }
+
+.console-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s;
+  }
+
+.console-card:hover .console-img img { transform: scale(1.05); }
+
+.console-info {
+    padding: 10px 12px;
+  }
+
+.console-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+.console-meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    color: #888;
+  }
+
+.console-badge {
+    position: absolute;
+    top: 8px; right: 8px;
+    background: var(--red);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    padding: 2px 8px;
+    letter-spacing: 1px;
+  }
+
+
+/* ═══════════════════════════════════════════
+   REQUESTS PAGE
+═══════════════════════════════════════════ */
+
+/* PAGE */
+  .page-wrap {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+.form-panel {
+    width: 100%;
+    max-width: 680px;
+    background: var(--card-bg);
+    border: 3px solid var(--red);
+    padding: 0;
+    overflow: hidden;
+  }
+
+.form-header {
+    background: var(--red);
+    padding: 18px 28px;
+    border-bottom: 3px solid #800;
+  }
+
+.form-header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #fff;
+    text-shadow: 2px 2px 0 #800;
+  }
+
+.form-body {
+    padding: 28px;
+  }
+
+.required-note {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+  }
+
+.required-note span { color: var(--red-bright); }
+
+.field {
+    margin-bottom: 20px;
+  }
+
+label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: var(--label-color);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+
+label .req { color: var(--red-bright); margin-right: 2px; }
+
+input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text);
+    padding: 10px 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    border-radius: 0;
+  }
+
+input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="tel"]:focus,
+  textarea:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 2px rgba(204,0,0,0.2);
+  }
+
+textarea {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text);
+    padding: 10px 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    border-radius: 0;
+  }
+
+.divider {
+    border: none;
+    border-top: 1px solid #2a2a2a;
+    margin: 28px 0;
+  }
+
+body.light .divider { border-color: #bbb; }
+
+.platform-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+.platform-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border: 1px solid #333;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: var(--subtext);
+    background: var(--input-bg);
+    transition: all 0.2s;
+    user-select: none;
+  }
+
+.platform-chip input { display: none; }
+
+.platform-chip:hover { border-color: var(--red); color: var(--text); }
+
+.platform-chip.checked {
+    background: rgba(204,0,0,0.2);
+    border-color: var(--red-bright);
+    color: #fff;
+  }
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--red);
+    border: 2px solid #800;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 8px;
+  }
+
+.submit-btn:hover { background: #ee0000; }
+
+.submit-btn:active { transform: scale(0.99); }
+
+/* SUCCESS STATE */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 40px 28px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+.success-msg .check {
+    font-size: 48px;
+    color: #44ff88;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+.success-msg h2 {
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+.success-msg p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: #888;
+  }
+
+.success-msg a {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--red-bright);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    border-bottom: 1px dotted;
+  }

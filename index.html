@@ -1,46 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Pacific Trails Resort</title>
-<link href="pacific.css" rel="stylesheet">
- <meta charset="utf-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- </head>
- <body>
-<div id="wrapper">
- <header>
- <h1><a href="index.html">Pacific Trails Resort</a></h1>
- </header>
-<nav>
-	<ul>
- <li><a href="index.html">Home</a></li> 
- <li><a href="yurts.html">Yurts</a></li>
- <li><a href="activities.html">Activities</a></li>
- <li><a href="reservations.html">Reservations</a></li>
-	</ul>
-</nav>
-<div id="homehero" class="hero">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retro Gaming Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark">
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="mode-buttons">
+    <button class="mode-btn dark" onclick="setMode('dark')">Dark Mode</button>
+    <button class="mode-btn light" onclick="setMode('light')">Light Mode</button>
+  </div>
+  <a href="index.html" class="store-name">RETRO GAMING STORE</a>
 </div>
- <main>
- <h2>Enjoy Nature in Luxury</h2>
- <p><span class="resort">Pacific Trails Resort</span> offers a special lodging experience on the California North Coast with panoramic views of the Pacific Ocean. Your stay at Pacific Trails Resort includes a sumptuously appointed private yurt and a cooked-to-order breakfast each morning.</p>
-<ul>
-	<li>Relax in our lodge while enjoying complimentary appetizers and beverages</li>
-	<li>Savor nightly fine dining with an ocean view</li>
-	<li>Unwind in the heated outdoor pool and whirl</li>
-	<li>Explore the coast on your own or join our guided tours</li>
-</ul>
-	<div id="contact">
-	<span class="resort">Pacific Trails Resort</span><br>
-	12010 Pacific Trails Road<br>
-	Zephyr, CA 95555<br><br>
-	888-555-5555<br><br>
-	</div>
- </main>
- <footer>
- Copyright &copy; 2022 Pacific Trails Resort<br>
- <a href="mailto:dsherlock@mail.dccc.edu">dsherlock@mail.dccc.edu</a>
- </footer>
-</div> 
+
+<!-- NAV -->
+<nav>
+  <div class="nav-item nintendo">
+    <a href="#">Nintendo</a>
+    <div class="dropdown">
+      <a href="#">NES</a>
+      <a href="#">SNES</a>
+      <a href="#">Gameboy/GBA</a>
+      <a href="#">Nintendo 64</a>
+      <a href="#">Gamecube</a>
+      <a href="#">Wii</a>
+      <a href="#">Wii U</a>
+      <a href="#">Switch 1</a>
+      <a href="#">Switch 2</a>
+    </div>
+  </div>
+  <div class="nav-item playstation">
+    <a href="#">Playstation</a>
+    <div class="dropdown">
+      <a href="#">Playstation</a>
+      <a href="#">Playstation 2</a>
+      <a href="#">Playstation 3</a>
+      <a href="#">Playstation 4</a>
+      <a href="#">Playstation 5</a>
+    </div>
+  </div>
+  <div class="nav-item xbox">
+    <a href="#">Xbox</a>
+    <div class="dropdown">
+      <a href="#">Xbox</a>
+      <a href="#">Xbox 360</a>
+      <a href="#">Xbox One</a>
+      <a href="#">Xbox Series X</a>
+      <a href="#">Xbox Rog Ally</a>
+    </div>
+  </div>
+  <div class="nav-item tcg">
+    <a href="#">TCG</a>
+    <div class="dropdown">
+      <a href="#">Newest Set</a>
+      <a href="#">Playmats</a>
+      <a href="#">Accessories</a>
+    </div>
+  </div>
+  <div class="nav-item anime">
+    <a href="#">Anime</a>
+    <div class="dropdown">
+      <a href="#">Anime Figures</a>
+      <a href="#">Anime Apparel</a>
+      <a href="#">Anime Plushies</a>
+      <a href="#">Anime Pins</a>
+      <a href="#">Anime Accessories</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h2>WELCOME TO THE RETRO GAMING STORE</h2>
+  <div class="hero-sub">// DEALS UPDATED EVERY WEEK //</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+  <!-- OWNER'S PICKS -->
+  <div class="section">
+    <div class="section-title">Owner's Picks</div>
+    <div class="picks-carousel" id="carousel">
+      <img src="assets/front/sunshine.png" class="active" alt="Mario Sunshine">
+      <img src="assets/front/smbws2.png" alt="Super Mario Bros Wonder">
+      <img src="assets/front/mgs4.png" alt="MGS4">
+      <img src="assets/front/ae2.png" alt="Ape Escape 2">
+      <img src="assets/front/frontiers.png" alt="Sonic Frontiers">
+      <img src="assets/front/pragmata.png" alt="Pragmata">
+      <div class="carousel-label" id="carousel-label">Super Mario Sunshine</div>
+    </div>
+    <div class="carousel-dots" id="carousel-dots"></div>
+    <a href="#" class="view-all-link">VIEW ALL PICKS →</a>
+  </div>
+
+  <!-- NEW RELEASES -->
+  <div class="section">
+    <div class="section-title">New Releases</div>
+    <div class="new-releases-grid">
+      <div class="nr-row">
+        <div class="nr-cover"><img src="assets/new_releases/just_released/re9.png" alt="Resident Evil Requiem"></div>
+        <div class="nr-trailer">
+          <iframe src="https://www.youtube.com/embed/9lrThxCoznw?si=xQz2LJuNAm-mKxq5" title="Resident Evil Requiem Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="nr-row">
+        <div class="nr-cover"><img src="assets/new_releases/just_released/deathstranding2.png" alt="Death Stranding 2"></div>
+        <div class="nr-trailer">
+          <iframe src="https://www.youtube.com/embed/etOOO9Sq7u8?si=k2wtbQ_STkDOXRd3" title="Death Stranding 2 Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <a href="new_releases.html" class="view-all-link">VIEW ALL NEW RELEASES →</a>
+  </div>
+
+  <!-- RETRO CONSOLES -->
+  <div class="section">
+    <div class="section-title">Retro Consoles</div>
+    <div class="retro-grid">
+      <div class="console-card"><img src="assets/retro_consoles/snes.png" alt="SNES"></div>
+      <div class="console-card"><img src="assets/retro_consoles/n64.png" alt="N64"></div>
+      <div class="console-card"><img src="assets/retro_consoles/ps1.png" alt="PS1"></div>
+      <div class="console-card"><img src="assets/retro_consoles/genesis.png" alt="Genesis"></div>
+    </div>
+    <a href="retro_consoles.html" class="view-all-link">VIEW ALL CONSOLES →</a>
+  </div>
+
+  <!-- CONSOLE REPAIRS -->
+  <div class="section repairs-section">
+    <div class="section-title">Console Repairs</div>
+    <table class="repair-table">
+      <thead>
+        <tr><th>Console</th><th>Price</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>N64</td><td class="repair-price">$50</td></tr>
+        <tr><td>PS1</td><td class="repair-price">$50</td></tr>
+        <tr><td>PS2</td><td class="repair-price">$60</td></tr>
+        <tr><td>SNES</td><td class="repair-price">$45</td></tr>
+        <tr><td>NES</td><td class="repair-price">$40</td></tr>
+        <tr><td>Genesis</td><td class="repair-price">$45</td></tr>
+        <tr><td>GameCube</td><td class="repair-price">$65</td></tr>
+        <tr><td>Xbox 360</td><td class="repair-price">$70</td></tr>
+        <tr><td>Wii</td><td class="repair-price">$55</td></tr>
+        <tr><td>GBA</td><td class="repair-price">$35</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>123 Retro Ave, Springfield, PA</span> &nbsp;|&nbsp;
+  <span>© 2026 Retro Gaming Store</span> &nbsp;|&nbsp;
+  <span><a href="requests.html" style="color:#ff6666;text-decoration:none;border-bottom:1px dotted #ff6666;" onmouseover="this.style.color='#ff9999'" onmouseout="this.style.color='#ff6666'">Requests Welcome</a></span> &nbsp;|&nbsp;
+  <span>(555) 555-5555</span> &nbsp;|&nbsp;
+  <span>Mon–Sat 10am–8pm &nbsp;Sun 12pm–6pm</span>
+</footer>
+
+<script>
+  function setMode(mode) {
+    document.body.className = mode;
+    localStorage.setItem('theme', mode);
+  }
+  const saved = localStorage.getItem('theme');
+  if (saved) document.body.className = saved;
+
+  // Carousel
+  const images = document.querySelectorAll('#carousel img');
+  const labels = ['Super Mario Sunshine', 'Super Mario Bros Wonder S2', 'Metal Gear Solid 4', 'Ape Escape 2', 'Sonic Frontiers', 'Pragmata'];
+  const dotsContainer = document.getElementById('carousel-dots');
+  const labelEl = document.getElementById('carousel-label');
+  let current = 0;
+
+  images.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goTo(i);
+    dotsContainer.appendChild(dot);
+  });
+
+  function goTo(n) {
+    images[current].classList.remove('active');
+    dotsContainer.children[current].classList.remove('active');
+    current = n;
+    images[current].classList.add('active');
+    dotsContainer.children[current].classList.add('active');
+    labelEl.textContent = labels[current] || '';
+  }
+
+  setInterval(() => goTo((current + 1) % images.length), 3500);
+</script>
 </body>
- </html>
+</html>

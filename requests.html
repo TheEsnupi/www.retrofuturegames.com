@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Requests — Retro Gaming Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark">
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="mode-buttons">
+    <button class="mode-btn dark" onclick="setMode('dark')">Dark Mode</button>
+    <button class="mode-btn light" onclick="setMode('light')">Light Mode</button>
+  </div>
+  <a href="index.html" class="store-name">RETRO GAMING STORE</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-item nintendo">
+    <a href="#">Nintendo</a>
+    <div class="dropdown">
+      <a href="#">NES</a><a href="#">SNES</a><a href="#">Gameboy/GBA</a>
+      <a href="#">Nintendo 64</a><a href="#">Gamecube</a>
+      <a href="#">Wii</a><a href="#">Wii U</a>
+      <a href="#">Switch 1</a><a href="#">Switch 2</a>
+    </div>
+  </div>
+  <div class="nav-item playstation">
+    <a href="#">Playstation</a>
+    <div class="dropdown">
+      <a href="#">Playstation</a><a href="#">Playstation 2</a>
+      <a href="#">Playstation 3</a><a href="#">Playstation 4</a>
+      <a href="#">Playstation 5</a>
+    </div>
+  </div>
+  <div class="nav-item xbox">
+    <a href="#">Xbox</a>
+    <div class="dropdown">
+      <a href="#">Xbox</a><a href="#">Xbox 360</a>
+      <a href="#">Xbox One</a><a href="#">Xbox Series X</a>
+      <a href="#">Xbox Rog Ally</a>
+    </div>
+  </div>
+  <div class="nav-item tcg">
+    <a href="#">TCG</a>
+    <div class="dropdown">
+      <a href="#">Newest Set</a><a href="#">Playmats</a><a href="#">Accessories</a>
+    </div>
+  </div>
+  <div class="nav-item anime">
+    <a href="#">Anime</a>
+    <div class="dropdown">
+      <a href="#">Anime Figures</a><a href="#">Anime Apparel</a>
+      <a href="#">Anime Plushies</a><a href="#">Anime Pins</a>
+      <a href="#">Anime Accessories</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE -->
+<div class="page-wrap">
+  <div class="form-panel">
+
+    <div class="form-header">
+      <h1>Submit a Request</h1>
+    </div>
+
+    <div class="form-body" id="form-body">
+      <div class="required-note">Required fields are marked with an asterisk <span>*</span></div>
+
+      <div class="field">
+        <label><span class="req">*</span>First Name:</label>
+        <input type="text" id="firstName" placeholder="First name" required>
+      </div>
+
+      <div class="field">
+        <label><span class="req">*</span>Last Name:</label>
+        <input type="text" id="lastName" placeholder="Last name" required>
+      </div>
+
+      <div class="field">
+        <label><span class="req">*</span>E-mail:</label>
+        <input type="email" id="email" placeholder="your@email.com" required>
+      </div>
+
+      <div class="field">
+        <label>Phone:</label>
+        <input type="tel" id="phone" placeholder="(555) 555-5555">
+      </div>
+
+      <hr class="divider">
+
+      <div class="field">
+        <label>Platform:</label>
+        <div class="platform-group" id="platform-group">
+          <label class="platform-chip"><input type="checkbox" value="NES"> NES</label>
+          <label class="platform-chip"><input type="checkbox" value="SNES"> SNES</label>
+          <label class="platform-chip"><input type="checkbox" value="N64"> N64</label>
+          <label class="platform-chip"><input type="checkbox" value="GBA"> GBA</label>
+          <label class="platform-chip"><input type="checkbox" value="GameCube"> GameCube</label>
+          <label class="platform-chip"><input type="checkbox" value="Wii"> Wii</label>
+          <label class="platform-chip"><input type="checkbox" value="Switch"> Switch</label>
+          <label class="platform-chip"><input type="checkbox" value="PS1"> PS1</label>
+          <label class="platform-chip"><input type="checkbox" value="PS2"> PS2</label>
+          <label class="platform-chip"><input type="checkbox" value="PS3"> PS3</label>
+          <label class="platform-chip"><input type="checkbox" value="PS4"> PS4</label>
+          <label class="platform-chip"><input type="checkbox" value="PS5"> PS5</label>
+          <label class="platform-chip"><input type="checkbox" value="Xbox OG"> Xbox OG</label>
+          <label class="platform-chip"><input type="checkbox" value="Xbox 360"> Xbox 360</label>
+          <label class="platform-chip"><input type="checkbox" value="Xbox One"> Xbox One</label>
+          <label class="platform-chip"><input type="checkbox" value="Genesis"> Genesis</label>
+          <label class="platform-chip"><input type="checkbox" value="Saturn"> Saturn</label>
+          <label class="platform-chip"><input type="checkbox" value="Other"> Other</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label><span class="req">*</span>Comments / Request Details:</label>
+        <textarea id="comments" placeholder="Tell us what you're looking for — game title, console, accessories, TCG cards, anime merch, etc." required></textarea>
+      </div>
+
+      <button class="submit-btn" onclick="submitForm()">SUBMIT REQUEST</button>
+    </div>
+
+    <div class="success-msg" id="success-msg">
+      <span class="check">✔</span>
+      <h2>Request Received!</h2>
+      <p>We'll be in touch as soon as we track it down.</p>
+      <a href="index.html">← Back to Store</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>123 Retro Ave, Springfield, PA</span> &nbsp;|&nbsp;
+  <span>© 2026 Retro Gaming Store</span> &nbsp;|&nbsp;
+  <span><a href="requests.html" style="color:#ff6666;text-decoration:none;border-bottom:1px dotted #ff6666;" onmouseover="this.style.color='#ff9999'" onmouseout="this.style.color='#ff6666'">Requests Welcome</a></span> &nbsp;|&nbsp;
+  <span>(555) 555-5555</span> &nbsp;|&nbsp;
+  <span>Mon–Sat 10am–8pm &nbsp;Sun 12pm–6pm</span>
+</footer>
+
+<script>
+  function setMode(mode) {
+    document.body.className = mode;
+    localStorage.setItem('theme', mode);
+  }
+  const saved = localStorage.getItem('theme');
+  if (saved) document.body.className = saved;
+
+  // Platform chip toggle
+  document.querySelectorAll('.platform-chip input').forEach(input => {
+    input.addEventListener('change', () => {
+      input.closest('.platform-chip').classList.toggle('checked', input.checked);
+    });
+  });
+
+  function submitForm() {
+    const required = ['firstName', 'lastName', 'email', 'comments'];
+    let valid = true;
+    required.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) {
+        el.style.borderColor = '#ff2020';
+        el.style.boxShadow = '0 0 0 2px rgba(255,32,32,0.3)';
+        valid = false;
+        el.addEventListener('input', () => {
+          el.style.borderColor = '';
+          el.style.boxShadow = '';
+        }, { once: true });
+      }
+    });
+    if (!valid) return;
+
+    document.getElementById('form-body').style.display = 'none';
+    document.getElementById('success-msg').style.display = 'block';
+  }
+</script>
+</body>
+</html>
